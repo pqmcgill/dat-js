@@ -102,10 +102,10 @@ class Dat extends EventEmitter {
   }
 
   _replicate (info) {
-    const archive = this.archives.find(a => a.discoveryKey.toString('hex') === info.channel);
+    const archive = this.archives.find(a => encoding.encode(a.discoveryKey) === info.channel);
     const userData = {};
     if (archive) {
-      userData.localKey = archive.db.local.key.toString('hex')
+      userData.key = encoding.encode(archive.db.local.key)
       userData.username = this.opts.username
     }
 
@@ -145,6 +145,18 @@ class Dat extends EventEmitter {
     archive.replicate({ stream, live: true })
   }
 
+  authorize (peer, cb) {
+    if (!peer.remoteUserData) {
+      throw new Error('peer does not have userData')
+    }
+
+    const data = JSON.parse(peer.remoteUserData)
+    const key = encoding.decode(data.key)
+    const username = data.username
+
+    this._authorize(key, ()
+  }
+
   /**
    * Closes the the swarm, and all underlying hyperdrive instances.
    */
@@ -158,14 +170,14 @@ class Dat extends EventEmitter {
 
     if (cb) this.once('close', cb)
 
-    parallel(this.archives.map((archive) => {
-      return (cb) => {
-        archive.close(cb)
-      }
-    }), () => {
-      this.archives = null
-      this.emit('close')
-    })
+    // parallel(this.archives.map((archive) => {
+    //   return (cb) => {
+    //     archive.close(cb)
+    //   }
+    // }), () => {
+    this.archives = null
+    this.emit('close')
+    // })
   }
 
   destroy (cb) {
