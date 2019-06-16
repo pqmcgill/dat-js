@@ -13,6 +13,10 @@ Want to use Dat in the command line or an app (not build applications)? Check ou
 
 Come ask questions [on gitter](https://gitter.im/datproject/discussions) or on ([#dat on IRC](http://webchat.freenode.net/?channels=dat)).
 
+## Installation
+To install this version of dat-js in your app, run
+```npm install @pqmcgill/dat-js```
+
 ## Usage
 
 See the documentation on [docs.datproject.org](https://docs.datproject.org/docs/browser-intro).
