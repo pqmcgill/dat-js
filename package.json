@@ -1,7 +1,7 @@
 {
   "name": "dat-js",
   "version": "8.0.2",
-  "description": "A pure javascript dat api",
+  "description": "A pure javascript dat api - forked to use the experimental hyperdrive#hyperdb-backend branch.",
   "main": "index.js",
   "scripts": {
     "test-local": "zuul --local -- tests/index.js",
@@ -23,7 +23,7 @@
     "discovery-swarm-web": "^1.4.0",
     "hypercore-crypto": "^1.0.0",
     "hypercore-protocol": "^6.9.0",
-    "hyperdrive": "^9.4.7",
+    "hyperdrive": "github:mafintosh/hyperdrive#hyperdb-backend",
     "random-access-memory": "^2.4.0",
     "random-access-web": "^2.0.2",
     "run-parallel": "^1.1.9"

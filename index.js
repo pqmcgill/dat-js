@@ -102,11 +102,19 @@ class Dat extends EventEmitter {
   }
 
   _replicate (info) {
+    const archive = this.archives.find(a => a.discoveryKey.toString('hex') === info.channel);
+    const userData = {};
+    if (archive) {
+      userData.localKey = archive.db.local.key.toString('hex')
+      userData.username = this.opts.username
+    }
+
     var stream = hypercoreProtocol({
       id: this.opts.id,
       live: true,
       encrypt: true,
       extensions: this.opts.extensions,
+      userData: JSON.stringify(userData)
     })
 
     stream.on('feed', (discoveryKey) => this._replicateFeed(stream, discoveryKey))
