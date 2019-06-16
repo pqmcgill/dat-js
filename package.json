@@ -1,5 +1,5 @@
 {
-  "name": "dat-js",
+  "name": "@pqmcgill/dat-js-hyperdb",
   "version": "8.0.2",
   "description": "A pure javascript dat api - forked to use the experimental hyperdrive#hyperdb-backend branch.",
   "main": "index.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/datproject/dat-js.git"
+    "url": "git+ssh://git@github.com/pqmcgill/dat-js.git"
   },
-  "author": "Karissa McKelvey <karissa@datproject.org>",
+  "author": "Patrick McGill",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/datproject/dat-js/issues"
+    "url": "https://github.com/pqmcgill/dat-js/issues"
   },
-  "homepage": "https://github.com/datproject/dat-js#readme",
+  "homepage": "https://github.com/pqmcgill/dat-js#readme",
   "dependencies": {
     "dat-encoding": "^5.0.1",
     "discovery-swarm-web": "^1.4.0",
@@ -45,6 +45,7 @@
     "javascript",
     "dat",
     "hyperdrive",
+    "hyperdb",
     "p2p"
   ]
 }

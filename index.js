@@ -12,7 +12,7 @@ const DAT_PROTOCOL = 'dat://'
 const STORAGE_NAME = 'dats'
 const STORAGE_COLLECTION_NAME = `files`
 
-module.exports =
+module.exports = 
 
 /**
  * The Dat object. Manages multiple archives in
@@ -103,10 +103,9 @@ class Dat extends EventEmitter {
 
   _replicate (info) {
     const archive = this.archives.find(a => encoding.encode(a.discoveryKey) === info.channel);
-    const userData = {};
+    const userData = this.opts.userData || {};
     if (archive) {
       userData.key = encoding.encode(archive.db.local.key)
-      userData.username = this.opts.username
     }
 
     var stream = hypercoreProtocol({
@@ -143,18 +142,6 @@ class Dat extends EventEmitter {
     if (!archive) return
 
     archive.replicate({ stream, live: true })
-  }
-
-  authorize (peer, cb) {
-    if (!peer.remoteUserData) {
-      throw new Error('peer does not have userData')
-    }
-
-    const data = JSON.parse(peer.remoteUserData)
-    const key = encoding.decode(data.key)
-    const username = data.username
-
-    this._authorize(key, ()
   }
 
   /**
