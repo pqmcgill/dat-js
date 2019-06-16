@@ -1,5 +1,5 @@
 {
-  "name": "@pqmcgill/dat-js-hyperdb",
+  "name": "@pqmcgill/dat-js",
   "version": "8.0.2",
   "description": "A pure javascript dat api - forked to use the experimental hyperdrive#hyperdb-backend branch.",
   "main": "index.js",
